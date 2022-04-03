@@ -1,0 +1,75 @@
+.user_name {
+  color: gray;
+}
+
+.message {
+  padding: 10px !important;
+  transition: all 250ms ease-in-out !important;
+  border-radius: 10px !important;
+  margin-bottom: 4px !important;
+}
+
+.mymessage {
+  background: lightblue;
+  color: #000 !important;
+  border-top-right-radius: 0px !important;
+  z-index: 999 !important;
+  }
+
+.othermessage {
+  background: whitesmoke !important;
+  color: #000 !important;
+  border-top-left-radius: 0px !important;
+  z-index: 999 !important;
+
+}
+
+.back{
+  background: #5f5c67;
+  height: 100%;
+}
+
+.time {
+  color: gray;
+  float: right;
+  font-size: small;
+}
+
+.message_row {
+  background-color: gray;
+}
+
+.balloon {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 10rem;
+  height: 13rem;
+  margin: -50px 0 0 -62px;
+  border-radius: 50%;
+  background-color: rgb(84, 34, 164);
+  box-shadow: inset 0 0 46px 8px rgba(255, 255, 255, 0.3);
+  animation: balloon 0.7s linear 0s infinite;
+}
+
+.balloon:before {
+  content: '';
+  display: block;
+  width: 10rem;
+  height: 13rem;
+  border-radius: 50%;
+  background-color: rgb(147, 139, 220);
+  transform: rotate(120deg);
+  box-shadow: inset 0 0 46px 8px rgba(90, 96, 207, 0.3);
+  animation: balloon 2.8s linear 0s infinite reverse;
+}
+
+@keyframes balloon {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

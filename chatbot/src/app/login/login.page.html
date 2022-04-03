@@ -1,0 +1,28 @@
+<ion-header translucent>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-icon name="logo-flickr"></ion-icon>
+      <ion-title color="light">
+        XhatButt LogIn
+      </ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="parent">
+    <ion-item lines="full" color="alert">
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input required [(ngModel)]="name" type="text" required></ion-input>
+    </ion-item>
+    <ion-item lines="full" color="alert">
+      <ion-label position="floating">Codigo</ion-label>
+      <ion-input required [(ngModel)]="code" type="text" required></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="login()" color="tertiary" expand="block">LogIn</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>

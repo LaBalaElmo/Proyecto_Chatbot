@@ -1,0 +1,54 @@
+<ion-header translucent>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-icon name="logo-flickr"></ion-icon>
+      <ion-title color="light">
+        XhatButt
+      </ion-title>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-title color="light">
+          LogOut
+        </ion-title>
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div class="balloon"></div> -->
+  <div class="back">
+    <ion-grid>
+      <ion-row *ngFor="let message of msgList">
+        <ion-col size="6" col-1 *ngIf="message.from!==me" class="message"
+          [ngClass]="{'mymessage': message.from === me, 'othermessage': message.from !== me}">
+          <span class="user_name">{{ message.from }}:</span>
+          <br>
+          <span>{{ message.msg }}</span>
+          <div class="time">{{message.created | date:'dd.MM hh:MM'}}</div>
+        </ion-col>
+
+        <ion-col size="6" offset="6" *ngIf="message.from===me" class="message"
+          [ngClass]="{'mymessage': message.from === me, 'othermessage': message.from !== me}">
+          <span class="user_name">{{ message.from }}:</span>
+          <br>
+          <span>{{ message.msg }}</span>
+          <div class="time">{{message.created | date:'dd.MM hh:MM'}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
+
+<ion-footer translucent>
+  <ion-item color="primary">
+    <ion-input class="input-box" type="text" placeholder="Write a message..." [(ngModel)]="input"></ion-input>
+    <ion-button class="send-button" (click)="sendMessage()">
+      <ion-icon name="send"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-footer>
