@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http.response import JsonResponse
-from Proyecto_Chatbot.django_chatbot.chatbot.models import Tarea
+from chatbot.models import Tarea
 from rest_framework import status
 from rest_framework.decorators import api_view
 from chatterbot import ChatBot
@@ -32,8 +32,8 @@ def create(request):
         faltas = estudiante.faltas
         tareaN=[]
         for tarea in tareas:
-            if tarea.entregado:
-                tareaN.append(tarea)
+            if not tarea.entregado:
+                tareaN.append(0)
         conversation = [
             "Hola", f"Hola {nombre}!, ¿Qué tal?",
             "Quiero saber mis notas", f"Claro {nombre}, ¿De qué parcial deseas saber tus notas?",
@@ -83,16 +83,16 @@ def create(request):
             "nro de faltas", f"Hola {nombre}, tienes {faltas} faltas. Ten cuidado!",
             "Nro de faltas", f"Hola {nombre}, tienes {faltas} faltas. Ten cuidado!",
             "Nro de Faltas", f"Hola {nombre}, tienes {faltas} faltas. Ten cuidado!",
-            "Tareas", f"Hola {nombre}, A continuación te enviaré la información de las tareas: ${tareas}",
-            "tareas", f"Hola {nombre}, A continuación te enviaré la información de las tareas: ${tareas}",
-            "Mis tareas", f"Hola {nombre}, A continuación te enviaré la información de las tareas: ${tareas}",
-            "mis Tareas", f"Hola {nombre}, A continuación te enviaré la información de las tareas: ${tareas}",
-            "Mis Tareas", f"Hola {nombre}, A continuación te enviaré la información de las tareas: ${tareas}",
-            "mis tareas", f"Hola {nombre}, A continuación te enviaré la información de las tareas: ${tareas}",
-            "tareas no entregadas", f"Hola {nombre}, estas son las tareas que no entregaste: ${tareaN}",
-            "Tareas no entregadas", f"Hola {nombre}, estas son las tareas que no entregaste: ${tareaN}",
-            "Tareas no Entregadas", f"Hola {nombre}, estas son las tareas que no entregaste: ${tareaN}",
-            "tareas no Entregadas", f"Hola {nombre}, estas son las tareas que no entregaste: ${tareaN}"
+            "Tareas", f"Hola {nombre}, A continuación te enviaré la información de las tareas: {tareas}",
+            "tareas", f"Hola {nombre}, A continuación te enviaré la información de las tareas: {tareas}",
+            "Mis tareas", f"Hola {nombre}, A continuación te enviaré la información de las tareas: {tareas}",
+            "mis Tareas", f"Hola {nombre}, A continuación te enviaré la información de las tareas: {tareas}",
+            "Mis Tareas", f"Hola {nombre}, A continuación te enviaré la información de las tareas: {tareas}",
+            "mis tareas", f"Hola {nombre}, A continuación te enviaré la información de las tareas: {tareas}",
+            "tareas no entregadas", f"Hola {nombre}, estas son las tareas que no entregaste: {tareaN}",
+            "Tareas no entregadas", f"Hola {nombre}, estas son las tareas que no entregaste: {tareaN}",
+            "Tareas no Entregadas", f"Hola {nombre}, estas son las tareas que no entregaste: {tareaN}",
+            "tareas no Entregadas", f"Hola {nombre}, estas son las tareas que no entregaste: {tareaN}"
         ]
         trainer = ListTrainer(chatbot.chatbot)
         trainer.train(conversation)

@@ -16,7 +16,6 @@ export class HomePage {
   constructor(private navCtrl: NavController, private service: ChatService) {}
 
   async sendMessage() {
-    console.log(await this.service.askChat(this.input));
     this.msgList.push({
       from: "me",
       msg: this.input,
